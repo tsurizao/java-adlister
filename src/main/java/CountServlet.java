@@ -11,6 +11,10 @@ public class CountServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, IOException {
+        boolean isCounterReset = Boolean.parseBoolean(request.getParameter("reset"));
+        if(isCounterReset) {
+            count = 0;
+        }
         count++;
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
