@@ -12,6 +12,6 @@
     <title>Profile</title>
 </head>
 <body>
-<h2>Welcome, ${userName}</h2>
+<h2>Welcome</h2>
 </body>
 </html>

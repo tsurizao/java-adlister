@@ -19,10 +19,9 @@ public class LoginServlet extends HttpServlet {
         String userName = req.getParameter("username");
         String password = req.getParameter("password");
         if (userName.equals("admin") && password.equals("password")) {
-            req.setAttribute("userName", userName);
-            req.getRequestDispatcher("/profile.jsp").forward(req, resp);
+            resp.sendRedirect("/profile");
         } else {
-            req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            resp.sendRedirect("/login");
         }
     }
 }
