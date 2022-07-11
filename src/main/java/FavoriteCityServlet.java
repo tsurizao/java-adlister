@@ -18,7 +18,6 @@ public class FavoriteCityServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String city = req.getParameter("city");
-        req.setAttribute("city", city);
         System.out.println(city);
     }
 }
