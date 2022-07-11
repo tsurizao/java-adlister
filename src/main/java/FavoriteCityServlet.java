@@ -1,3 +1,4 @@
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,21 +11,14 @@ import java.io.PrintWriter;
 public class FavoriteCityServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        String html = "<h1>Enter your favorite city:<h1>";
-        html += "<form method='POST'>" +
-                "<h3><label for='city'>City</label></h3>" +
-                "<input name='city' type='text' placeholder='Enter your favorite city'>" +
-                "<button>Submit</button>" +
-                "</form>";
-        out.println(html);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/favCity.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String city = req.getParameter("city");
+        req.setAttribute("city", city);
         System.out.println(city);
     }
 }
