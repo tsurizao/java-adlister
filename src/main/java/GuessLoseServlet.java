@@ -10,6 +10,6 @@ public class GuessLoseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String loser = "You lose!";
-        req.setAttribute("win-or-lose", loser);
+        req.setAttribute("winOrLose", loser);
         req.getRequestDispatcher("guess-results.jsp").forward(req, resp);    }
 }

@@ -7,6 +7,7 @@
 <h1>Guess The Correct Number</h1>
 <form action="" method="post">
     <div>
+        <h2>I'm thinking of a number between 1 and 3</h2>
         <ol>
             <li><input type="radio" name="guess" value="1"></li>
             <li><input type="radio" name="guess" value="2"></li>
