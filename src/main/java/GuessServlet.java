@@ -7,12 +7,14 @@ import java.io.IOException;
 
 @WebServlet("/guess")
 public class GuessServlet extends HttpServlet {
-    int randomNumber = 1 + (int) (Math.random() * ((3 - 1) + 1));
+    int randomNumber = (int) (Math.random() * 3) + 1;
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/guess.jsp").forward(req, resp);
         System.out.println(randomNumber);
+
     }
 
     @Override
