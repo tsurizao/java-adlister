@@ -11,11 +11,10 @@ public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user = (String) request.getSession().getAttribute("user");
         String password = (String) request.getSession().getAttribute("password");
-        boolean validUser;
-        if(user == null || password == null || user.trim().equals("") || password.trim().equals("")){
+        boolean invalidUser = (user == null || password == null || user.trim().equals("") || password.trim().equals(""));
+        if (invalidUser) {
             response.sendRedirect("/login");
-        } else if (user.equals("admin") && password.equals("password")) {
-            validUser = true;
+        } else {
             request.getRequestDispatcher("WEB-INF/profile.jsp").forward(request, response);
         }
     }
