@@ -6,7 +6,6 @@ import com.mysql.cj.jdbc.Driver;
 
 public class AuthorsDao implements Authors {
     private Connection connection;
-
     public AuthorsDao() {
         try {
             DriverManager.registerDriver(new Driver());
@@ -31,6 +30,20 @@ public class AuthorsDao implements Authors {
             throw new RuntimeException("Error connecting to db", sqle);
         }
         return authors;
+    }
+
+    @Override
+    public Author getAuthorById(long id) {
+        Author author = null;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM codeup_test_db.authors WHERE id='" + id + "'");
+            rs.next();
+            author = new Author(rs.getLong("id"), rs.getString("author_name"));
+        } catch (SQLException sqle) {
+            throw new RuntimeException("error connecting to db", sqle);
+        }
+        return author;
     }
 
     @Override

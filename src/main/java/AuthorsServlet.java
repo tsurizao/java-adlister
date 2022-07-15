@@ -11,7 +11,7 @@ public class AuthorsServlet extends HttpServlet {
         Authors authorsDao = new AuthorsDao();
         List<Author> authors = authorsDao.all();
         request.setAttribute("authors", authors);
-        request.getRequestDispatcher("/WEB-INF/authors.jsp");
+        request.getRequestDispatcher("/WEB-INF/authors.jsp").forward(request, response);
     }
 
     @Override
