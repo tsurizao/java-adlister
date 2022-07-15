@@ -10,7 +10,7 @@ import java.util.List;
 public class QuotesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Quotes quotesDao = new QuotesDao();
+        Quotes quotesDao = DaoFactory.getQuotesDao();
         List<Quote> quotes = quotesDao.all();
         req.setAttribute("quotes", quotes);
         req.getRequestDispatcher("/WEB-INF/quotes.jsp").forward(req, resp);
