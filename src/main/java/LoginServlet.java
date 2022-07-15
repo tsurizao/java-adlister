@@ -11,7 +11,7 @@ public class LoginServlet extends HttpServlet {
         String user = (String) request.getSession().getAttribute("user");
         String password = (String) request.getSession().getAttribute("password");
         if (user == null) {
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         } else if (user.equals("admin") && password.equals("password")){
             response.sendRedirect("/profile");
         }
