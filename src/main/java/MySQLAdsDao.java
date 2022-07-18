@@ -1,7 +1,4 @@
-import com.mysql.cj.api.Session;
 import com.mysql.cj.jdbc.Driver;
-
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,19 +33,21 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Long insert(Ad ad) {
-//        String title = ad.getTitle();
-//        String description = ad.getDescription();
-//        String query = "INSERT INTO adlister_db.ads (title, description) VALUES ('" + title + ", " + description + "')";
-//        try {
-//            Statement statement = connection.createStatement();
-//            statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
-//            ResultSet rs = statement.getGeneratedKeys();
-//            rs.next();
-//            long key = rs.getLong(1);
-//        } catch (SQLException sqle){
-//            throw new RuntimeException("Error connecting to db", sqle);
-//        }
+        Long id = ad.getId();
+        Long user_id = 1L;
+        String title = ad.getTitle();
+        String description = ad.getDescription();
 
+        String query = "INSERT INTO adlister_db.ads (id, user_id, title, description) VALUES ('" + id + "', '" + user_id + "', '" + title + "', '" + description + "')";
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = statement.getGeneratedKeys();
+            rs.next();
+            long key = rs.getLong(1);
+        } catch (SQLException sqle){
+            throw new RuntimeException("Error connecting to db", sqle);
+        }
         return null;
     }
 }

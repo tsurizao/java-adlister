@@ -9,7 +9,7 @@ import java.io.IOException;
 public class UsersIndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("users", DaoFactory.getAdsDao().all());
+        req.setAttribute("users", DaoFactory.getUsersDao().all());
         req.getRequestDispatcher("/WEB-INF/users/index.jsp").forward(req, resp);
     }
 }
